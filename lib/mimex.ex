@@ -1,0 +1,2 @@
+defmodule Mimex do
+end
