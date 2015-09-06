@@ -1,6 +1,6 @@
 #!/usr/local/bin/elixir
 
-defmodule Mimex.Fetch do
+defmodule MIME.Fetch do
   def types do
     :ssl.start
     :inets.start
@@ -36,5 +36,5 @@ end
 
 {:ok, file} = File.open "priv/mime.types", [:write]
 
-IO.binwrite(file, Mimex.Fetch.types)
+IO.binwrite(file, MIME.Fetch.types)
 File.close file
