@@ -40,7 +40,7 @@ When asking for the MIME type, it doesn't matter whether your extension is upper
 or lowercase, or whether it has a "." or not. When asking for an extension, we
 always return the lowercase variant with a period.
 
- [Build Status]:https://travic-ci.org/hex-sh/mimex.svg?branch=master
+ [Build Status]:https://api.travis-ci.org/hex-sh/mimex.svg?branch=master
  [Hex Version]:https://img.shields.io/hexpm/v/mimex.svg?label=hex%20version
  [License]:https://img.shields.io/hexpm/l/mimex.svg
  [build-link]:https://travis-ci.org/hex-sh/mimex
