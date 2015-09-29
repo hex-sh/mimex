@@ -8,7 +8,7 @@ Add the following to your `mix.exs` file:
 
 ``` elixir
 defp deps do
-  [{"mimex, "~> x.x.x}]
+  [{"mimex", "~> x.x.x}"]
 end
 ```
 
