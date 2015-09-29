@@ -1,6 +1,6 @@
-# mimex
+# mimex [![Build Status]][build-link] [![Hex Version]][version-link] ![License]
 
-MIME type guesser for Elixir.
+MIME type utilities for Elixir.
 
 ## Installation
 
@@ -39,3 +39,9 @@ These either return the result on success or throw an `ArgumentError` with
 When asking for the MIME type, it doesn't matter whether your extension is upper
 or lowercase, or whether it has a "." or not. When asking for an extension, we
 always return the lowercase variant with a period.
+
+ [Build Status]:https://travic-ci.org/hex-sh/mimex.svg?branch=master
+ [Hex Version]:https://img.shields.io/hexpm/v/mimex.svg?label=hex%20version
+ [License]:https://img.shields.io/hexpm/l/mimex.svg
+ [build-link]:https://travis-ci.org/hex-sh/mimex
+ [version-link]:https://hex.pm/packages/mimex
