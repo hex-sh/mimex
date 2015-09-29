@@ -6,13 +6,13 @@ defmodule MIME do
   |> String.split("\n")
   |> Enum.map(&(String.split(&1, " ")))
 
-  Enum.each types, fn [mimetype | extensions] ->
-    def extension(unquote(mimetype)) do
+  Enum.each types, fn [mime_type | extensions] ->
+    def extension(unquote(mime_type)) do
       # Return the first extension from the list, prepended by "."
       unquote({:ok, "." <> hd(extensions)})
     end
 
-    def extensions(unquote(mimetype)) do
+    def extensions(unquote(mime_type)) do
       # Return the list of extensions, all prepended by "."
       unquote(
         {:ok, Enum.map(extensions, fn ext -> ("." <> ext) end)}
@@ -22,10 +22,10 @@ defmodule MIME do
     Enum.each extensions, fn extension ->
       # Support getting a MIME type for extensions with and without a dot.
       def mime_type(unquote(extension)) do
-        unquote({:ok, mimetype})
+        unquote({:ok, mime_type})
       end
       def mime_type(unquote("." <> extension)) do
-        unquote({:ok, mimetype})
+        unquote({:ok, mime_type})
       end
     end
   end
@@ -58,7 +58,41 @@ defmodule MIME do
       |> String.downcase
       |> mime_type
     else
-      {:error, "No extension matches"}
+      {:error, "No extension matches: " <> extension}
+    end
+  end
+
+  @doc """
+  Return a list of extensions associated with `mime_type`.
+  """
+  def extensions(mime_type) do
+    {:error, "No MIME type matches: " <> mime_type}
+  end
+
+  @doc """
+  Throwing version of `extensions/1`
+  """
+  def extensions!(mime_type) do
+    case extensions(mime_type) do
+      {:ok, mime_type} -> mime_type
+      {:error, reason} -> raise ArgumentError, message: reason
+    end
+  end
+
+  @doc """
+  Get the first extension for `mime_type`.
+  """
+  def extension(mime_type) do
+    {:error, "No MIME type matches: " <> mime_type}
+  end
+
+  @doc """
+  Throwing version of `extension/1`.
+  """
+  def extension!(mime_type) do
+    case extension(mime_type) do
+      {:ok, mime_type} -> mime_type
+      {:error, reason} -> raise ArgumentError, message: reason
     end
   end
 end

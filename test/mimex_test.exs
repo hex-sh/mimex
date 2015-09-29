@@ -19,13 +19,37 @@ defmodule MimexTest do
   end
 
   test "returns {:error, reason} when extension is undefined" do
-    assert MIME.mime_type("asdfasdf") == {:error, "No extension matches"}
+    assert MIME.mime_type("asdfasdf") == {:error, "No extension matches: asdfasdf"}
   end
 
-  test "throwing version of mime_type" do
+  test "mime_type!/1" do
     assert MIME.mime_type!(".jpg") == "image/jpeg"
-    assert_raise ArgumentError, "No extension matches", fn ->
+    assert_raise ArgumentError, "No extension matches: asdf", fn ->
       MIME.mime_type!("asdf")
+    end
+  end
+
+  test "extensions/1" do
+    assert MIME.extensions("image/jpeg") == {:ok, [".jpeg", ".jpg", ".jpe"]}
+    assert MIME.extensions("sadfasdf/asdfasdf") == {:error, "No MIME type matches: sadfasdf/asdfasdf"}
+  end
+
+  test "extensions!/1" do
+    assert MIME.extensions!("image/jpeg") == [".jpeg", ".jpg", ".jpe"]
+    assert_raise ArgumentError, "No MIME type matches: sadfasdf/asdfasdf", fn ->
+      MIME.extensions!("sadfasdf/asdfasdf")
+    end
+  end
+
+  test "extension/1" do
+    assert MIME.extension("image/jpeg") == {:ok, ".jpeg"}
+    assert MIME.extension("asdfasdf/asdfasdf") == {:error, "No MIME type matches: asdfasdf/asdfasdf"}
+  end
+
+  test "extension!/1" do
+    assert MIME.extension!("image/jpeg") == ".jpeg"
+    assert_raise ArgumentError, "No MIME type matches: asdfasdf/asdfasdf", fn ->
+      MIME.extension!("asdfasdf/asdfasdf")
     end
   end
 end
