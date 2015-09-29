@@ -1,0 +1,11 @@
+language: elixir
+
+otp_release:
+  - 18.0
+
+elixir:
+  - 1.0.5
+  - 1.1.0
+
+notifications:
+  email: false
