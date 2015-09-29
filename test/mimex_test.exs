@@ -17,4 +17,15 @@ defmodule MimexTest do
     assert MIME.mime_type(".JPEG") == {:ok, "image/jpeg"}
     assert MIME.mime_type(".DOC")  == {:ok, "application/msword"}
   end
+
+  test "returns {:error, reason} when extension is undefined" do
+    assert MIME.mime_type("asdfasdf") == {:error, "No extension matches"}
+  end
+
+  test "throwing version of mime_type" do
+    assert MIME.mime_type!(".jpg") == "image/jpeg"
+    assert_raise ArgumentError, "No extension matches", fn ->
+      MIME.mime_type!("asdf")
+    end
+  end
 end
