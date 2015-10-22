@@ -1,5 +1,30 @@
 defmodule MIME do
-  @moduledoc File.read!("./README.md")
+  @moduledoc """
+  MIME type utilities for Elixir. Get the MIME type most commonly associated
+  with an extension and vice-versa.
+
+  ## Functions
+
+  `mimex` provides the following functions:
+
+  1. `MIME.mime_type/1` &mdash; get the MIME type from the file extension.
+  2. `MIME.extension/1` &mdash; get the first extension for a MIME type.
+  3. `MIME.extensions/1` &mdash; get the list of extensions for a MIME type.
+
+  The above functions return `{:ok, result}` on success and {:error, reason} on
+  error. We also provide throwing versions:
+
+  1. `MIME.mime_type!/1`
+  2. `MIME.extension!/1`
+  3. `MIME.extensions!/1`
+
+  These either return the result on success or throw an `ArgumentError` with
+  `reason` as the message on failure.
+
+  It doesn't matter whether you call the above functions with upper or loewrcase
+  extensions. It also doesn't matter if the `.` is present or not. When you pass
+  in a MIME type, we always return a lowercase extension with a `.`.
+  """
 
   # Read all the MIME types into a list of the following structure:
   # [["sample/mime-type", "ext1", "ext2"], [..]]
@@ -66,6 +91,9 @@ defmodule MIME do
 
   @doc """
   Return a list of extensions associated with `mime_type`.
+
+  On success, returns a tuple of the following format: `{:ok, [extensions]}`.
+  If no match is found, returns `{:error, reason}`.
   """
   def extensions(mime_type) do
     {:error, "No MIME type matches: " <> mime_type}
@@ -83,6 +111,9 @@ defmodule MIME do
 
   @doc """
   Get the first extension for `mime_type`.
+
+  On success, returns a tuple of the following format: `{:ok, extension}`.
+  If no match is found, returns `{:error, reason}`.
   """
   def extension(mime_type) do
     {:error, "No MIME type matches: " <> mime_type}

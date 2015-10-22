@@ -9,7 +9,8 @@ defmodule Mimex.Mixfile do
      start_permanent: Mix.env == :prod,
      description: description,
      deps: deps,
-     package: package]
+     package: package,
+     docs: docs]
   end
 
   def application do
@@ -31,5 +32,12 @@ defmodule Mimex.Mixfile do
     [maintainers: ["Laurens Duijvesteijn"],
      licenses: ["MIT"],
      links: %{"GitHub" => "https://github.com/hex-sh/mimex"}]
+  end
+
+  defp docs do
+    [
+      main: "extra-readme",
+      extras: ["README.md", "CHANGELOG.md"]
+    ]
   end
 end

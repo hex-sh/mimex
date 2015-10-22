@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-All notable changes to `mimex` will be documented in this file.
+All notable changes to `mimex` will be documented here.
 
 ## 0.1.0 - 2015-09-29
 

@@ -1,12 +1,9 @@
-# mimex [![Build Status]][travis-link]
+# mimex
+
+[![Build Status](https://api.travis-ci.org/hex-sh/mimex.svg?branch=master)](https://travis-ci.org/hex-sh/mimex)
 
 MIME type utilities for Elixir. Get the MIME type for an extension or a list
-of extensions for a MIME type.
-
- - [Hex.pm page][hexpm]
- - [Docs][docs]
- - [License][license] (MIT)
- - Current version: `0.1.1`, ([CHANGELOG])
+of extensions for a MIME type. [Documentation is available here](http://hexdocs.pm/mimex).
 
 ## Usage
 
@@ -42,10 +39,3 @@ These either return the result on success or throw an `ArgumentError` with
 It doesn't matter whether you call the above functions with upper or loewrcase
 extensions. It also doesn't matter if the `.` is present or not. When you pass
 in a MIME type, we always return a lowercase extension with a `.`.
-
- [Build Status]:https://api.travis-ci.org/hex-sh/mimex.svg?branch=master
- [travis-link]:https://travis-ci.org/hex-sh/mimex
- [license]:https://github.com/hex-sh/mimex/blob/master/LICENSE
- [docs]:http://hexdocs.pm/mimes
- [hexpm]:https://hex.pm/packages/mimex
- [CHANGELOG]:https://github.com/hex-sh/mimex/blob/master/CHANGELOG.md
