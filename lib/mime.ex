@@ -1,4 +1,6 @@
 defmodule MIME do
+  @moduledoc File.read!("./README.md")
+
   # Read all the MIME types into a list of the following structure:
   # [["sample/mime-type", "ext1", "ext2"], [..]]
   types = File.read!("#{:code.priv_dir(:mimex)}/mime.types")
