@@ -11,7 +11,7 @@ Add the following to your `mix.exs` file:
 
 ``` elixir
 defp deps do
-  [{"mimex", "~> 0.1.0}"]
+  [{:mimex, "~> 0.1.0"}]
 end
 ```
 
